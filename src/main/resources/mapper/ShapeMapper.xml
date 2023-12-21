@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Shape">
+	<resultMap id="ShapeResultMap" type="org.demo.app.domain.Shape">
+		<id property="id" column="id" />
+		<result property="color" column="color" />
+	</resultMap>
+
+	<select id="findAll" resultMap="ShapeResultMap">
+		select * from schema1.shape
+	</select>
+
+	<select id="findOne" parameterType="int" resultMap="ShapeResultMap">
+		select * from schema1.shape where id = #{id}
+	</select>
+
+	<insert id="insert">
+		insert into schema1.shape (id, color)
+		values (#{id}, #{color})
+	</insert>
+
+</mapper>
